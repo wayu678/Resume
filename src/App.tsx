@@ -6,11 +6,11 @@ import profileImg from "./assets/profile.jpg";
 function App() {
   const { language, setLanguage, translate } = useContext(TranslateContext);
 
-  const certificates: string[] = [
-    "Certificate 1.jpg",
-    "Certificate 2.jpg",
-    "Certificate 3.jpg",
-    "Certificate 4.jpg",
+  const certificates = [
+    { name: "CSS Certificate", file: "Certificate 1.jpg" },
+    { name: "JavaScript Basic Certificate", file: "Certificate 2.jpg" },
+    { name: "SQL Basic Certificate", file: "Certificate 3.jpg" },
+    { name: "SQL Intermediate Certificate", file: "Certificate 4.jpg" },
   ];
 
   return (
@@ -139,31 +139,93 @@ function App() {
         {/* Skills */}
         <section id="skills" className="scroll-mt-10 py-16">
           <h2 className="text-2xl font-semibold">{translate('ทักษะ', 'Skills')}</h2>
-          <p className="mt-4 text-neutral-700 dark:text-neutral-300">
-            {translate(
-              'เพิ่มทักษะของคุณที่นี่',
-              'Add your skills here.'
-            )}
-          </p>
+
+          <div className="mt-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {/* Programming Languages */}
+            <div className="bg-slate-50 dark:bg-neutral-900 p-4 rounded-lg border border-slate-200 dark:border-neutral-700">
+              <h3 className="text-lg font-semibold mb-3 text-slate-700 dark:text-purple-400">
+                {translate('ภาษาโปรแกรมมิ่ง', 'Programming Languages')}
+              </h3>
+              <div className="flex flex-wrap gap-2">
+                {['C++', 'Python', 'Java', 'JavaScript', 'TypeScript'].map((lang) => (
+                  <span key={lang} className="px-3 py-1 bg-slate-100 dark:bg-purple-900 text-slate-700 dark:text-purple-200 text-sm rounded-full border border-slate-200 dark:border-purple-700">
+                    {lang}
+                  </span>
+                ))}
+              </div>
+            </div>
+
+            {/* Frameworks & Libraries */}
+            <div className="bg-slate-50 dark:bg-neutral-900 p-4 rounded-lg border border-slate-200 dark:border-neutral-700">
+              <h3 className="text-lg font-semibold mb-3 text-slate-700 dark:text-blue-400">
+                {translate('เฟรมเวิร์ก & ไลบรารี', 'Frameworks & Libraries')}
+              </h3>
+              <div className="flex flex-wrap gap-2">
+                {['React + Vite', 'Tailwind CSS', 'Vue'].map((framework) => (
+                  <span key={framework} className="px-3 py-1 bg-slate-100 dark:bg-blue-900 text-slate-700 dark:text-blue-200 text-sm rounded-full border border-slate-200 dark:border-blue-700">
+                    {framework}
+                  </span>
+                ))}
+              </div>
+            </div>
+
+            {/* Automation & Testing */}
+            <div className="bg-slate-50 dark:bg-neutral-900 p-4 rounded-lg border border-slate-200 dark:border-neutral-700">
+              <h3 className="text-lg font-semibold mb-3 text-slate-700 dark:text-green-400">
+                {translate('ออโตเมชัน & การทดสอบ', 'Automation & Testing')}
+              </h3>
+              <div className="flex flex-wrap gap-2">
+                <span className="px-3 py-1 bg-slate-100 dark:bg-green-900 text-slate-700 dark:text-green-200 text-sm rounded-full border border-slate-200 dark:border-green-700">
+                  Selenium (Automated Testing)
+                </span>
+              </div>
+            </div>
+
+            {/* Tools & Platforms */}
+            <div className="bg-slate-50 dark:bg-neutral-900 p-4 rounded-lg border border-slate-200 dark:border-neutral-700">
+              <h3 className="text-lg font-semibold mb-3 text-slate-700 dark:text-orange-400">
+                {translate('เครื่องมือ & แพลตฟอร์ม', 'Tools & Platforms')}
+              </h3>
+              <div className="flex flex-wrap gap-2">
+                {['Git (command-line)', 'Figma (UI/UX Design)', 'Power BI (Data Analytics)'].map((tool) => (
+                  <span key={tool} className="px-3 py-1 bg-slate-100 dark:bg-orange-900 text-slate-700 dark:text-orange-200 text-sm rounded-full border border-slate-200 dark:border-orange-700">
+                    {tool}
+                  </span>
+                ))}
+              </div>
+            </div>
+
+            {/* Concepts & Paradigms */}
+            <div className="bg-slate-50 dark:bg-neutral-900 p-4 rounded-lg border border-slate-200 dark:border-neutral-700">
+              <h3 className="text-lg font-semibold mb-3 text-slate-700 dark:text-pink-400">
+                {translate('แนวคิด & แพรดิกม์', 'Concepts & Paradigms')}
+              </h3>
+              <div className="flex flex-wrap gap-2">
+                <span className="px-3 py-1 bg-slate-100 dark:bg-pink-900 text-slate-700 dark:text-pink-200 text-sm rounded-full border border-slate-200 dark:border-pink-700">
+                  Object-Oriented Programming (OOP)
+                </span>
+              </div>
+            </div>
+          </div>
         </section>
 
         {/* Certificates */}
         <section id="certificates" className="scroll-mt-10 py-16 border-t border-neutral-200 dark:border-neutral-800">
           <h2 className="text-2xl font-semibold">{translate('ประกาศนียบัตร & การอบรม', 'Certificates & Training')}</h2>
           <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-4">
-            {certificates.map((src, idx) => {
-              const encoded = encodeURI(src);
+            {certificates.map((cert, idx) => {
+              const encoded = encodeURI(cert.file);
               return (
                 <div key={idx} className="border border-neutral-200 dark:border-neutral-800 rounded overflow-hidden bg-white/50 dark:bg-neutral-900/50">
                   <div className="w-full aspect-[16/9] overflow-hidden">
                     <img
                       src={encoded}
-                      alt={`certificate-${idx + 1}`}
+                      alt={cert.name}
                       className="w-full h-full object-cover"
                     />
                   </div>
                   <div className="p-2 text-center text-xs text-neutral-600 dark:text-neutral-400">
-                    {translate('ประกาศนียบัตร', 'Certificate')} {idx + 1}
+                    {cert.name}
                   </div>
                 </div>
               );
