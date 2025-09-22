@@ -113,6 +113,12 @@ function App() {
           </p>
           <p className="mt-4 text-neutral-700 dark:text-neutral-300">
             {translate(
+              'ที่อยู่ : 50 ถนนรถไฟตะวันตก ซอยทางรถไฟตะวันตก 3 ตำบลนครปฐม อำเภอเมือง จังหวัดนครปฐม 73000 ประเทศไทย',
+              'Address : 50 Tawan Tok Road,Soi Thang Rotfai Tawan Tok 3,Nakhon Pathom Subdistrict, Mueang Nakhon Pathom District,Nakhon Pathom 73000, Thailand'
+            )}
+          </p>
+          <p className="mt-4 text-neutral-700 dark:text-neutral-300">
+            {translate(
               'สัญชาติ : ไทย',
               'Nationality : Thai'
             )}
@@ -147,7 +153,7 @@ function App() {
                 {translate('ภาษาโปรแกรมมิ่ง', 'Programming Languages')}
               </h3>
               <div className="flex flex-wrap gap-2">
-                {['C++', 'Python', 'Java', 'JavaScript', 'TypeScript'].map((lang) => (
+                {['C++', , 'Python', 'Java', 'JavaScript', 'TypeScript', 'C#', 'SQL'].map((lang) => (
                   <span key={lang} className="px-3 py-1 bg-slate-100 dark:bg-purple-900 text-slate-700 dark:text-purple-200 text-sm rounded-full border border-slate-200 dark:border-purple-700">
                     {lang}
                   </span>
@@ -178,6 +184,12 @@ function App() {
                 <span className="px-3 py-1 bg-slate-100 dark:bg-green-900 text-slate-700 dark:text-green-200 text-sm rounded-full border border-slate-200 dark:border-green-700">
                   Selenium (Automated Testing)
                 </span>
+                <span className="px-3 py-1 bg-slate-100 dark:bg-green-900 text-slate-700 dark:text-green-200 text-sm rounded-full border border-slate-200 dark:border-green-700">
+                  Black box & White box Testing
+                </span>
+                <span className="px-3 py-1 bg-slate-100 dark:bg-green-900 text-slate-700 dark:text-green-200 text-sm rounded-full border border-slate-200 dark:border-green-700">
+                  Testcase Design
+                </span>
               </div>
             </div>
 
@@ -198,7 +210,7 @@ function App() {
             {/* Concepts & Paradigms */}
             <div className="bg-slate-50 dark:bg-neutral-900 p-4 rounded-lg border border-slate-200 dark:border-neutral-700">
               <h3 className="text-lg font-semibold mb-3 text-slate-700 dark:text-pink-400">
-                {translate('แนวคิด & แพรดิกม์', 'Concepts & Paradigms')}
+                {translate('แนวคิด & หลักการ', 'Concepts & Principle')}
               </h3>
               <div className="flex flex-wrap gap-2">
                 <span className="px-3 py-1 bg-slate-100 dark:bg-pink-900 text-slate-700 dark:text-pink-200 text-sm rounded-full border border-slate-200 dark:border-pink-700">
