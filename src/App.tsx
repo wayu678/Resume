@@ -1,9 +1,17 @@
 import { ThemeToggle } from "./components/ThemeToggle";
-import { useContext, useState, useEffect } from "react";
+import { useContext } from "react";
 import { TranslateContext } from "./contexts/translate.context.ts";
+import profileImg from "./assets/profile.jpg";
 
 function App() {
   const { language, setLanguage, translate } = useContext(TranslateContext);
+
+  const certificates: string[] = [
+    "Certificate 1.jpg",
+    "Certificate 2.jpg",
+    "Certificate 3.jpg",
+    "Certificate 4.jpg",
+  ];
 
   return (
     <div className="min-h-dvh bg-white text-black dark:bg-black dark:text-white transition-colors duration-200">
@@ -11,7 +19,7 @@ function App() {
       {/* Navbar */}
       <header className="sticky top-0 z-40 border-b border-neutral-200 dark:border-neutral-800 backdrop-blur">
         <nav className="max-w-5xl mx-auto flex justify-between items-center p-4">
-          <a href="#home" className="font-semibold">{translate('พอร์ตโฟลิโอ', 'My Portfolio')}</a>
+          <a href="#home" className="font-semibold">{translate('เรซูเม่', 'My Resume')}</a>
           <div className="hidden md:flex gap-6 text-sm">
             <a href="#about">{translate('เกี่ยวกับ', 'About')}</a>
             <a href="#projects">{translate('โปรเจกต์', 'Projects')}</a>
@@ -43,24 +51,35 @@ function App() {
         </nav>
       </header>
 
+
+
       <main className="max-w-5xl mx-auto px-4">
         {/* Hero */}
         <section id="home" className="min-h-[70dvh] flex items-center">
-          <div>
-            <h1 className="text-4xl font-bold mt-2">{translate('วายุ แก้วประวัติ', 'Wayu kaewparwat')}</h1>
-            <p className="mt-4 text-neutral-700 dark:text-neutral-300">
-              {translate(
-                'นิสิตชั้นปี 4 มหาวิยาลัยเกษตรศาสตร์วิทยาเขตกำแพงแสน สาขาเทคโนโลยีสารสารสนเทศกำลังมองหาที่ฝึกประสบการณ์ทางด้านสารสนเทศ โดยต้องการเรียนรู้เทคโนโลยีใหม่ ๆ และรูปแบบการทำงานที่หลากหลายพร้อมรับความท้าทายที่เข้ามาเพื่อพัฒนาขีดความสามารถของตนเอง ให้มีความพร้อมในงานทำงานจริงต่อไป ',
-                'A fourth-year student at Kasetsart University, Kamphaeng Saen Campus, majoring in Information Technology, seeking an internship opportunity in the field of information technology. Eager to learn new technologies and diverse working methods, and ready to embrace challenges to further develop skills and prepare for real-world professional work.'
-              )}
-            </p>
-            <div className="mt-6 flex gap-3">
-              <a
-                href="#contact"
-                className="px-4 py-2 rounded bg-purple-600 text-white text-sm flex items-center gap-2"
-              >
-                {translate('ติดต่อฉัน', 'Contact Me')}
-              </a>
+          <div className="grid md:grid-cols-2 gap-8 items-center w-full">
+            {/* Profile */}
+            <div className="flex justify-center md:justify-start">
+              <div className="rounded-full overflow-hidden h-48 w-48 md:h-64 md:w-64 lg:h-72 lg:w-72 ring-2 ring-white dark:ring-neutral-900 shadow-lg">
+                <img src={profileImg} alt={translate('รูปโปรไฟล์', 'Profile photo')} className="h-full w-full object-cover" />
+              </div>
+            </div>
+
+            <div>
+              <h1 className="text-4xl font-bold mt-2">{translate('วายุ แก้วประวัติ', 'Wayu kaewparwat')}</h1>
+              <p className="mt-4 text-neutral-700 dark:text-neutral-300">
+                {translate(
+                  'นิสิตชั้นปี 4 มหาวิยาลัยเกษตรศาสตร์วิทยาเขตกำแพงแสน สาขาเทคโนโลยีสารสารสนเทศกำลังมองหาที่ฝึกประสบการณ์ทางด้านสารสนเทศ โดยต้องการเรียนรู้เทคโนโลยีใหม่ ๆ และรูปแบบการทำงานที่หลากหลายพร้อมรับความท้าทายที่เข้ามาเพื่อพัฒนาขีดความสามารถของตนเอง ให้มีความพร้อมในงานทำงานจริงต่อไป ',
+                  'A fourth-year student at Kasetsart University, Kamphaeng Saen Campus, majoring in Information Technology, seeking an internship opportunity in the field of information technology. Eager to learn new technologies and diverse working methods, and ready to embrace challenges to further develop skills and prepare for real-world professional work.'
+                )}
+              </p>
+              <div className="mt-6 flex gap-3">
+                <a
+                  href="#contact"
+                  className="px-4 py-2 rounded bg-purple-600 text-white text-sm flex items-center gap-2"
+                >
+                  {translate('ติดต่อฉัน', 'Contact Me')}
+                </a>
+              </div>
             </div>
           </div>
         </section>
@@ -131,12 +150,25 @@ function App() {
         {/* Certificates */}
         <section id="certificates" className="scroll-mt-10 py-16 border-t border-neutral-200 dark:border-neutral-800">
           <h2 className="text-2xl font-semibold">{translate('ประกาศนียบัตร & การอบรม', 'Certificates & Training')}</h2>
-          <p className="mt-4 text-neutral-700 dark:text-neutral-300">
-            {translate(
-              'เพิ่มประกาศนียบัตรและการอบรมของคุณที่นี่',
-              'Add your certificates and training here.'
-            )}
-          </p>
+          <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-4">
+            {certificates.map((src, idx) => {
+              const encoded = encodeURI(src);
+              return (
+                <div key={idx} className="border border-neutral-200 dark:border-neutral-800 rounded overflow-hidden bg-white/50 dark:bg-neutral-900/50">
+                  <div className="w-full aspect-[16/9] overflow-hidden">
+                    <img
+                      src={encoded}
+                      alt={`certificate-${idx + 1}`}
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                  <div className="p-2 text-center text-xs text-neutral-600 dark:text-neutral-400">
+                    {translate('ประกาศนียบัตร', 'Certificate')} {idx + 1}
+                  </div>
+                </div>
+              );
+            })}
+          </div>
         </section>
 
         {/* Contact */}
