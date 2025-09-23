@@ -118,12 +118,21 @@ function App() {
               <div className="bg-neutral-100 dark:bg-neutral-900 rounded-2xl p-4 md:p-5 border border-neutral-200 dark:border-neutral-800 shadow-sm">
                 <div className="text-sm font-medium mb-3 text-neutral-700 dark:text-neutral-300">{translate('ความสนใจ', 'Interests')}</div>
                 <div className="flex flex-wrap gap-2">
-                  {['React + Vite', 'Tailwind CSS', 'Selenium', 'Docker'].map((it) => (
-                    <span key={it} className="px-3 py-1 rounded-full bg-neutral-200 dark:bg-neutral-800 text-neutral-800 dark:text-neutral-200 text-sm">
-                      {it}
+                  {[
+                    { th: 'ความปลอดภัยไซเบอร์ / การรักษาความปลอดภัยข้อมูล', en: 'Cybersecurity / Data Security' },
+                    { th: 'การพัฒนา API / Microservices', en: 'API / Microservices Development' },
+                    { th: 'การพัฒนาเว็บแอปพลิเคชัน', en: 'Web Application Development' },
+                    { th: 'การออกแบบระบบฐานข้อมูล', en: 'Database System Design' },
+                  ].map((item) => (
+                    <span
+                      key={item.en}
+                      className="px-3 py-1 rounded-full bg-neutral-200 dark:bg-neutral-800 text-neutral-800 dark:text-neutral-200 text-sm"
+                    >
+                      {translate(item.th, item.en)}
                     </span>
                   ))}
                 </div>
+
               </div>
             </div>
           </div>
