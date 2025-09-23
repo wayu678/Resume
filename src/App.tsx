@@ -13,6 +13,39 @@ function App() {
     { name: "SQL Intermediate Certificate", file: "Certificate 4.jpg" },
   ];
 
+  // const resumeFile = encodeURI('/Resume_วายุ_EN.pdf');
+
+  const projects = [
+    {
+      titleTh: "Automated-Testing",
+      titleEn: "Automated-Testing",
+      descTh: "การทำ Automated Testing ด้วย Selenium Robot framework ",
+      descEn: "Workshop on Automated Testing with Selenium Robot Framework",
+      repo: "https://github.com/wayu678/Automated-Testing",
+    },
+    {
+      titleTh: "login_system",
+      titleEn: "login_system",
+      descTh: "ทำระบบล็อกอินด้วย Next.js และยืนยันตัวตนด้วย JWT",
+      descEn: "Built a login system with Next.js and authentication using JWT.",
+      repo: "https://github.com/wayu678/login_system",
+    },
+    {
+      titleTh: "Frontend-API-Integration-Project",
+      titleEn: "Frontend-API-Integration-Project",
+      descTh: "การสร้าง API และนำมาใช้ในฝั่ง Frontend",
+      descEn: "Building an API and integrating it on the Frontend.",
+      repo: "https://github.com/wayu678/Frontend-API-Integration-Project",
+    },
+    {
+      titleTh: "kubernetes101",
+      titleEn: "kubernetes101",
+      descTh: "การใช้งาน Kubernetes เพื่อให้ระบบมีความทนทานและสามารถจัดการ container อัตโนมัติ",
+      descEn: "Implemented Kubernetes to ensure system resilience, automatically restarting or migrating containers to other nodes in case of failure.",
+      repo: "https://github.com/wayu678/kubernetes101",
+    },
+  ];
+
   return (
     <div className="min-h-dvh bg-white text-black dark:bg-black dark:text-white transition-colors duration-200">
 
@@ -21,7 +54,7 @@ function App() {
         <nav className="max-w-5xl mx-auto flex justify-between items-center p-4">
           <a href="#home" className="font-semibold">{translate('เรซูเม่', 'My Resume')}</a>
           <div className="hidden md:flex gap-6 text-sm">
-            <a href="#about">{translate('เกี่ยวกับ', 'About')}</a>
+            <a href="#about">{translate('ข้อมูลส่วนตัว', 'Profile')}</a>
             <a href="#projects">{translate('โปรเจกต์', 'Projects')}</a>
             <a href="#skills">{translate('ทักษะ', 'Skills')}</a>
             <a href="#certificates">{translate('ประกาศนียบัตร', 'Certificates')}</a>
@@ -75,9 +108,31 @@ function App() {
               <div className="mt-6 flex gap-3">
                 <a
                   href="#contact"
-                  className="px-4 py-2 rounded bg-purple-600 text-white text-sm flex items-center gap-2"
+                  className="px-4 py-2 rounded border border-neutral-300 dark:border-neutral-700 text-sm flex items-center gap-2 hover:bg-neutral-100 dark:hover:bg-neutral-800"
                 >
                   {translate('ติดต่อฉัน', 'Contact Me')}
+                </a>
+                <a
+                  href={`${import.meta.env.BASE_URL}${encodeURIComponent('Resume_วายุ_EN.pdf')}`}
+                  download="Resume_Wayu_EN.pdf"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="px-4 py-2 rounded border border-neutral-300 dark:border-neutral-700 text-sm flex items-center gap-2 hover:bg-neutral-100 dark:hover:bg-neutral-800"
+
+                >
+                  {translate('เรซูเม่', 'Resume')}
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v2a2 2 0 002 2h12a2 2 0 002-2v-2m-6-4v8m0 0l-4-4m4 4l4-4M12 4v12" />
+                  </svg>
+                </a>
+                <a
+                  href="https://github.com/wayu678"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="px-4 py-2 rounded border border-neutral-300 dark:border-neutral-700 text-sm flex items-center gap-2 hover:bg-neutral-100 dark:hover:bg-neutral-800"
+                >
+                  GitHub
+                  <span aria-hidden>↗</span>
                 </a>
               </div>
             </div>
@@ -134,12 +189,30 @@ function App() {
         {/* Projects */}
         <section id="projects" className="scroll-mt-10 py-16 border-t border-neutral-200 dark:border-neutral-800">
           <h2 className="text-2xl font-semibold">{translate('โปรเจกต์', 'Projects')}</h2>
-          <p className="mt-4 text-neutral-700 dark:text-neutral-300">
-            {translate(
-              'เพิ่มโปรเจกต์ของคุณที่นี่',
-              'Add your projects here.'
-            )}
-          </p>
+
+          <div className="mt-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {projects.map((p, idx) => (
+              <div key={idx} className="bg-slate-50 dark:bg-neutral-900 p-4 rounded-lg border border-slate-200 dark:border-neutral-700 flex flex-col">
+                <h3 className="text-lg font-semibold text-slate-800 dark:text-white">
+                  {translate(p.titleTh, p.titleEn)}
+                </h3>
+                <p className="mt-2 text-sm text-slate-600 dark:text-neutral-300 flex-1">
+                  {translate(p.descTh, p.descEn)}
+                </p>
+                <div className="mt-4">
+                  <a
+                    href={p.repo}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="inline-flex items-center justify-center gap-2 px-3 py-2 text-sm rounded-md bg-slate-800 text-white hover:bg-slate-700 dark:bg-blue-600 dark:hover:bg-blue-500"
+                  >
+                    <span>GitHub</span>
+                    <span aria-hidden>↗</span>
+                  </a>
+                </div>
+              </div>
+            ))}
+          </div>
         </section>
 
         {/* Skills */}
@@ -199,7 +272,7 @@ function App() {
                 {translate('เครื่องมือ & แพลตฟอร์ม', 'Tools & Platforms')}
               </h3>
               <div className="flex flex-wrap gap-2">
-                {['Git (command-line)', 'Figma (UI/UX Design)', 'Power BI (Data Analytics)'].map((tool) => (
+                {['Git (command-line)', 'Figma (UI/UX Design)', 'Power BI (Data Analytics)', 'Docker', 'Unity 2D/3D'].map((tool) => (
                   <span key={tool} className="px-3 py-1 bg-slate-100 dark:bg-orange-900 text-slate-700 dark:text-orange-200 text-sm rounded-full border border-slate-200 dark:border-orange-700">
                     {tool}
                   </span>
@@ -218,8 +291,27 @@ function App() {
                 </span>
               </div>
             </div>
+
+            {/* Languages */}
+            <div className="bg-slate-50 dark:bg-neutral-900 p-4 rounded-lg border border-slate-200 dark:border-neutral-700">
+              <h3 className="text-lg font-semibold mb-3 text-slate-700 dark:text-emerald-400">
+                {translate('ภาษา', 'Languages')}
+              </h3>
+              <div className="flex flex-wrap gap-2">
+                {[
+                  translate('ไทย (เจ้าของภาษา)', 'Thai (Native)'),
+                  translate('อังกฤษ (การอ่านและการเขียนทางเทคนิคระดับกลาง)', 'English ( Intermediate Technical Reading & Writing)'),
+                ].map((lang) => (
+                  <span key={lang as unknown as string} className="px-3 py-1 bg-slate-100 dark:bg-emerald-900 text-slate-700 dark:text-emerald-200 text-sm rounded-full border border-slate-200 dark:border-emerald-700">
+                    {lang}
+                  </span>
+                ))}
+              </div>
+            </div>
           </div>
         </section>
+
+
 
         {/* Certificates */}
         <section id="certificates" className="scroll-mt-10 py-16 border-t border-neutral-200 dark:border-neutral-800">
@@ -243,24 +335,51 @@ function App() {
               );
             })}
           </div>
+          <h2 className="text-2xl font-semibold">{translate('กิจกรรม & การอบรมอื่น ๆ ที่เคยเข้ารวม', 'Additional Activities & Trainings')}</h2>
+          <p className="mt-4 text-neutral-700 dark:text-neutral-300">
+            {translate(
+              'หลักสูตร เปิดโลกทักษะ AI และความปลอดภัยทางไซเบอร์',
+              'AI Skills and Cybersecurity'
+            )}
+          </p>
+          <p className="mt-4 text-neutral-700 dark:text-neutral-300">
+            {translate(
+              'หลักสูตร Automates Testing',
+              'Automates Testing'
+            )}
+          </p>
+          <p className="mt-4 text-neutral-700 dark:text-neutral-300">
+            {translate(
+              'หลักสูตรเก็บความต้องการของระบบ ',
+              'Get requiment workshop'
+            )}
+          </p>
+          <p className="mt-4 text-neutral-700 dark:text-neutral-300">
+            {translate(
+              'หลักสูตร Oracle Course ',
+              'Oracle Course '
+            )}
+          </p>
         </section>
 
         {/* Contact */}
+
         <section id="contact" className="scroll-mt-10 py-16 border-t border-neutral-200 dark:border-neutral-800">
           <h2 className="text-2xl font-semibold">{translate('ติดต่อ', 'Contact')}</h2>
           <p className="mt-4">
-            {translate(
-              'หากสนใจร่วมงานหรือติดต่อได้ทางอีเมลหรือเบอร์โทรศัพท์ที่ระบุไว้ในส่วนท้าย',
-              "If you're interested in working together, please contact me via email or phone provided in the footer."
-            )}
+            {translate('สนใจร่วมงานหรือติดต่อได้ทางอีเมลหรือเบอร์โทรศัพท์', "If you're interested in working together, contact me via email or phone")}
           </p>
           <div className="mt-6 flex flex-wrap gap-3 items-center">
-            <a href="mailto:your.email@example.com" className="flex items-center gap-2 px-4 py-2 rounded bg-blue-600 text-white text-sm hover:bg-blue-700 transition">
+            <a href="mailto:wayu.ka@ku.th" className="flex items-center gap-2 px-4 py-2 rounded bg-blue-600 text-white text-sm hover:bg-blue-700 transition">
               ✉️ {translate('ส่งอีเมล', 'Email')}
             </a>
-            <a href="tel:+6612345678" className="flex items-center gap-2 px-4 py-2 rounded bg-green-600 text-white text-sm hover:bg-green-700 transition">
+            <a href="tel:0939267977" className="flex items-center gap-2 px-4 py-2 rounded bg-green-600 text-white text-sm hover:bg-green-700 transition">
               📞 {translate('โทรติดต่อ', 'Call')}
             </a>
+            <div className="px-4 py-2 text-sm text-neutral-700 dark:text-neutral-300">
+              Email: <a href="mailto:wayu.ka@ku.th" className="underline hover:text-blue-600">wayu.ka@ku.th</a><br />
+              Tel: <a href="tel:0954121064" className="underline hover:text-green-600">093-9267-977</a>
+            </div>
           </div>
         </section>
 
@@ -268,7 +387,7 @@ function App() {
 
       {/* Footer */}
       <footer className="py-10 border-t border-neutral-200 dark:border-neutral-800 text-center text-sm text-neutral-500">
-        Email: <a href="mailto:your.email@example.com" className="underline hover:text-blue-600">your.email@example.com</a> | Tel: <a href="tel:+6612345678" className="underline hover:text-green-600">+66 123 45678</a>
+        Email: <a href="mailto:wayu.ka@ku.th" className="underline hover:text-blue-600">wayu.ka@ku.th</a> | Tel: <a href="tel:093-9267-977" className="underline hover:text-green-600">093-9267-977</a>
       </footer>
     </div>
   );

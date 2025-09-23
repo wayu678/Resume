@@ -1,6 +1,6 @@
 {
-  "name": "my-react-portfolio",
-  "homepage": "https://Arpasiri10.github.io/my-react-portfolio",
+  "name": "resume-wayu",
+  "homepage": "https://Arpasiri10.github.io/resume-wayu",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -15,7 +15,7 @@
   "dependencies": {
     "@tailwindcss/vite": "^4.1.12",
     "gh-pages": "^6.3.0",
-    "my-react-portfolio": "file:",
+    "resume-wayu": "file:",
     "react": "^19.1.1",
     "react-dom": "^19.1.1"
   },
