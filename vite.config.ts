@@ -7,8 +7,10 @@ export default defineConfig({
     react(),
     tailwindcss(),
   ],
-  base: '/my-react-portfolio/',
+  // Deploy path on GitHub Pages
+  base: '/Resume/',
   build: {
-    outDir: 'docs'
+    // Match gh-pages deploy script which publishes the 'dist' folder
+    outDir: 'dist'
   }
 })
