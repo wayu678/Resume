@@ -241,7 +241,6 @@ function App() {
           <div className="mt-4 md:mt-6 bg-neutral-100 dark:bg-neutral-900 rounded-2xl p-4 md:p-5 border border-neutral-200 dark:border-neutral-800 shadow-sm">
             <div className="flex items-center justify-between">
               <h3 className="text-lg font-semibold text-neutral-900 dark:text-white">{translate('ผลงาน', 'Projects')}</h3>
-              <span className="text-sm text-neutral-500">{translate('อัปเดตล่าสุด', 'Latest updates')}</span>
             </div>
 
 
