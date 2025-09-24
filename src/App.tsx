@@ -274,7 +274,7 @@ function App() {
                   const encoded = encodeURI(cert.file);
                   return (
                     <div key={idx} className="rounded-xl border border-neutral-200 dark:border-neutral-800 p-0 bg-white/60 dark:bg-neutral-950/40 overflow-hidden">
-                      <div className="w-full aspect-[16/9] overflow-hidden">
+                      <div className="w-full aspect-[3/2] overflow-hidden">
                         <img src={encoded} alt={cert.name} className="w-full h-full object-cover" />
                       </div>
                       <div className="p-3">
